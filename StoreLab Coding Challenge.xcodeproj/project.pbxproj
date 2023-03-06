@@ -14,7 +14,6 @@
 		8A7D970E29B5E885001F025F /* StoreLab_Coding_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D970D29B5E885001F025F /* StoreLab_Coding_ChallengeTests.swift */; };
 		8A7D971829B5E885001F025F /* StoreLab_Coding_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D971729B5E885001F025F /* StoreLab_Coding_ChallengeUITests.swift */; };
 		8A7D971A29B5E885001F025F /* StoreLab_Coding_ChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D971929B5E885001F025F /* StoreLab_Coding_ChallengeUITestsLaunchTests.swift */; };
-		8A7D972A29B5EA4F001F025F /* ContinuousScrolling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D972929B5EA4F001F025F /* ContinuousScrolling.swift */; };
 		8AF906B629B5F6D200E434CA /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF906B529B5F6D200E434CA /* ImageInfo.swift */; };
 		8AF906BB29B5FB2400E434CA /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF906BA29B5FB2400E434CA /* Request.swift */; };
 		8AF906BD29B5FBC300E434CA /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF906BC29B5FBC300E434CA /* APIConstants.swift */; };
@@ -25,6 +24,8 @@
 		8AF906C829B602F900E434CA /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF906C729B602F900E434CA /* RequestManager.swift */; };
 		8AF906CB29B6038B00E434CA /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF906CA29B6038B00E434CA /* DataParser.swift */; };
 		8AF906CE29B605B800E434CA /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF906CD29B605B800E434CA /* ImageView.swift */; };
+		8AF906D429B60F9900E434CA /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF906D329B60F9900E434CA /* Nuke */; };
+		8AF906D629B60F9900E434CA /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF906D529B60F9900E434CA /* NukeUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +56,6 @@
 		8A7D971329B5E885001F025F /* StoreLab Coding ChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StoreLab Coding ChallengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A7D971729B5E885001F025F /* StoreLab_Coding_ChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLab_Coding_ChallengeUITests.swift; sourceTree = "<group>"; };
 		8A7D971929B5E885001F025F /* StoreLab_Coding_ChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLab_Coding_ChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		8A7D972929B5EA4F001F025F /* ContinuousScrolling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinuousScrolling.swift; sourceTree = "<group>"; };
 		8AF906B529B5F6D200E434CA /* ImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
 		8AF906BA29B5FB2400E434CA /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		8AF906BC29B5FBC300E434CA /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
@@ -73,6 +73,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AF906D429B60F9900E434CA /* Nuke in Frameworks */,
+				8AF906D629B60F9900E434CA /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,7 +164,6 @@
 		8A7D972729B5E9DE001F025F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8A7D972929B5EA4F001F025F /* ContinuousScrolling.swift */,
 				8AF906CD29B605B800E434CA /* ImageView.swift */,
 			);
 			path = View;
@@ -256,6 +257,10 @@
 			dependencies = (
 			);
 			name = "StoreLab Coding Challenge";
+			packageProductDependencies = (
+				8AF906D329B60F9900E434CA /* Nuke */,
+				8AF906D529B60F9900E434CA /* NukeUI */,
+			);
 			productName = "StoreLab Coding Challenge";
 			productReference = 8A7D96F929B5E884001F025F /* StoreLab Coding Challenge.app */;
 			productType = "com.apple.product-type.application";
@@ -328,6 +333,9 @@
 				Base,
 			);
 			mainGroup = 8A7D96F029B5E884001F025F;
+			packageReferences = (
+				8AF906D229B60F9900E434CA /* XCRemoteSwiftPackageReference "Nuke" */,
+			);
 			productRefGroup = 8A7D96FA29B5E884001F025F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -370,7 +378,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A7D972A29B5EA4F001F025F /* ContinuousScrolling.swift in Sources */,
 				8AF906C029B5FCC100E434CA /* NetworkError.swift in Sources */,
 				8AF906B629B5F6D200E434CA /* ImageInfo.swift in Sources */,
 				8AF906C829B602F900E434CA /* RequestManager.swift in Sources */,
@@ -709,6 +716,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8AF906D229B60F9900E434CA /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8AF906D329B60F9900E434CA /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AF906D229B60F9900E434CA /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		8AF906D529B60F9900E434CA /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AF906D229B60F9900E434CA /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8A7D96F129B5E884001F025F /* Project object */;
 }
