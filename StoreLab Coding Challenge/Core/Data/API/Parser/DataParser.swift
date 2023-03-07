@@ -20,6 +20,7 @@ class DataParser: DataParserProtocol {
     }
     
     func parse<T: Decodable>(data: Data) throws -> T {
+        print(String(decoding: data, as: UTF8.self))
         return try jsonDecoder.decode(T.self, from: data)
     }
 }

@@ -11,7 +11,8 @@ import SwiftUI
 struct StoreLab_Coding_ChallengeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ImageGridView()
+//                .environmentObject(ImageLoader())
         }
     }
 }
