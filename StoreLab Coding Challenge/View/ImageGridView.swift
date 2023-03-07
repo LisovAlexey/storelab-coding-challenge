@@ -14,23 +14,25 @@ struct ImageGridView: View {
     
     @StateObject var imageInfoLoader = ImageInfoLoader()
     
+    @State var isDisplayingPreview = false
+    @State var selected: ImageInfo?
+    
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.flexible(), spacing: 4), GridItem(.flexible(), spacing: 4)], spacing: 4) {
-//                if imageLoader.isInited {
-                    ForEach(imageInfoLoader.imageInfos) { imageInfo in
+                ForEach(imageInfoLoader.imageInfos) { imageInfo in
+                    Button(action: {
+                        selected = imageInfo
+                        isDisplayingPreview = true
+                    }, label: {
                         ImageView(imageInfo: imageInfo)
                             .onAppear {
                                 Task {
                                     try await imageInfoLoader.loadImagesIfNeeded(imageInfo: imageInfo)
                                 }
                             }
-                        
-                    }
-//                } else {
-//                    ProgressView()
-//                }
-                
+                    })
+                }
             }
             .padding(8)
             .onAppear {
@@ -38,8 +40,15 @@ struct ImageGridView: View {
                     try? await imageInfoLoader.loadImages()
                 }
             }
-
         }
+        .sheet(isPresented: $isDisplayingPreview, onDismiss: {
+            selected = nil
+            isDisplayingPreview = false
+        }, content: {
+            if let selected = selected {
+                ImageInfoView(imageInfo: selected)
+            }
+        })
     }
 }
 

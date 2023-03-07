@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A2093F329B76CD1002F3AEF /* ImageInfoLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2093F229B76CD1002F3AEF /* ImageInfoLoader.swift */; };
+		8A2093F529B7B2C5002F3AEF /* ImageInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2093F429B7B2C5002F3AEF /* ImageInfoView.swift */; };
 		8A7D96FD29B5E884001F025F /* StoreLab_Coding_ChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D96FC29B5E884001F025F /* StoreLab_Coding_ChallengeApp.swift */; };
 		8A7D96FF29B5E884001F025F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D96FE29B5E884001F025F /* ContentView.swift */; };
 		8A7D970129B5E885001F025F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A7D970029B5E885001F025F /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		8A2093F229B76CD1002F3AEF /* ImageInfoLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfoLoader.swift; sourceTree = "<group>"; };
+		8A2093F429B7B2C5002F3AEF /* ImageInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfoView.swift; sourceTree = "<group>"; };
 		8A7D96F929B5E884001F025F /* StoreLab Coding Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "StoreLab Coding Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A7D96FC29B5E884001F025F /* StoreLab_Coding_ChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLab_Coding_ChallengeApp.swift; sourceTree = "<group>"; };
 		8A7D96FE29B5E884001F025F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			children = (
 				8AF906CD29B605B800E434CA /* ImageView.swift */,
 				8AF906D729B629D100E434CA /* ImageGridView.swift */,
+				8A2093F429B7B2C5002F3AEF /* ImageInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				8AF906C829B602F900E434CA /* RequestManager.swift in Sources */,
 				8AF906CE29B605B800E434CA /* ImageView.swift in Sources */,
 				8A2093F329B76CD1002F3AEF /* ImageInfoLoader.swift in Sources */,
+				8A2093F529B7B2C5002F3AEF /* ImageInfoView.swift in Sources */,
 				8AF906CB29B6038B00E434CA /* DataParser.swift in Sources */,
 				8A7D96FF29B5E884001F025F /* ContentView.swift in Sources */,
 				8AF906D829B629D100E434CA /* ImageGridView.swift in Sources */,

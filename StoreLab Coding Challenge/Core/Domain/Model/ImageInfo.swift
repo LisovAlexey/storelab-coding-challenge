@@ -32,11 +32,11 @@ struct ImageInfo: Decodable, Identifiable, Equatable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.id = Int(try container.decode(String.self, forKey: .id))!
-        self.author = ""
-        self.width = 200
-        self.height = 200
-        self.url = "200"
+        self.id = Int(try container.decode(String.self, forKey: .id)) ?? -1
+        self.author = try container.decode(String.self, forKey: .author)
+        self.width = try container.decode(Int.self, forKey: .width)
+        self.height = try container.decode(Int.self, forKey: .height)
+        self.url = try container.decode(String.self, forKey: .url)
         self.downloadUrl = try container.decode(String.self, forKey: .downloadUrl)
     }
     
@@ -48,9 +48,4 @@ struct ImageInfo: Decodable, Identifiable, Equatable {
     var downloadUrl: String
     
     var image: UIImage?
-    
-//    var previewDownloadUrl: URL? {
-////        print(try? PhotoRequest.getPhotoByIdSquare(id: id, squareSize: 400).createURLRequest())
-//        return try? PhotoRequest.getPhotoByIdSquare(id: id, squareSize: 400).createURLRequest().url
-//    }
 }
