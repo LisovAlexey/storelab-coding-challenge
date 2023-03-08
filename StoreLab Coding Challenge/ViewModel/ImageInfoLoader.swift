@@ -11,10 +11,16 @@ import UIKit
 actor ImageInfoLoader: ObservableObject {
     @Published @MainActor private(set) var imageInfos: [ImageInfo] = []
     
+    private let imageInfoStore: ImageInfoStore
+    
+    init(imageInfoStore: ImageInfoStore) {
+        self.imageInfoStore = imageInfoStore
+    }
+    
     private var page = 0
     
-    var limit = 20
-    let downloadBefore = 20
+    private var limit = 20
+    private let downloadBefore = 20
     
     private(set) var lastLoadedId = 0
     
@@ -27,6 +33,12 @@ actor ImageInfoLoader: ObservableObject {
     }
     
     func preloadImage(newImageInfo: inout ImageInfo) async throws {
+        
+        if let imageInfoFromStorage = newImageInfo.getExistingImageInfo() {
+            newImageInfo = imageInfoFromStorage
+            return
+        }
+        
         let newImage = try await ImageLoader.shared.image(newImageInfo)
         newImageInfo.image = newImage
         setLastLoadedId(id: newImageInfo.id)
@@ -71,6 +83,8 @@ actor ImageInfoLoader: ObservableObject {
                 imageInfos.append(loadedImage)
             }
         }
+        
+        try await imageInfoStore.save(imageInfos: imageInfos)
         
         await toggleLoadingImages()
     }

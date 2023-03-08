@@ -12,10 +12,11 @@ import NukeUI
 
 struct ImageGridView: View {
     
-    @StateObject var imageInfoLoader = ImageInfoLoader()
+    @StateObject var imageInfoLoader = ImageInfoLoader(imageInfoStore: ImageInfoStoreService(context: PersistenceController.shared.container.newBackgroundContext()))
+
     
     @State var isDisplayingPreview = false
-    @State var selected: ImageInfo?
+    @State var selected: ImageInfo? = nil
     
     var body: some View {
         ScrollView {
@@ -23,7 +24,6 @@ struct ImageGridView: View {
                 ForEach(imageInfoLoader.imageInfos) { imageInfo in
                     Button(action: {
                         selected = imageInfo
-                        isDisplayingPreview = true
                     }, label: {
                         ImageView(imageInfo: imageInfo)
                             .onAppear {
@@ -43,12 +43,14 @@ struct ImageGridView: View {
         }
         .sheet(isPresented: $isDisplayingPreview, onDismiss: {
             selected = nil
-            isDisplayingPreview = false
         }, content: {
             if let selected = selected {
                 ImageInfoView(imageInfo: selected)
             }
         })
+        .onChange(of: selected) { newValue in
+            isDisplayingPreview = newValue != nil
+        }
     }
 }
 

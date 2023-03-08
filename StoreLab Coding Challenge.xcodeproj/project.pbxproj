@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		8A2093F329B76CD1002F3AEF /* ImageInfoLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2093F229B76CD1002F3AEF /* ImageInfoLoader.swift */; };
 		8A2093F529B7B2C5002F3AEF /* ImageInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2093F429B7B2C5002F3AEF /* ImageInfoView.swift */; };
+		8A2093F929B7BC69002F3AEF /* ImageInfoSave.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A2093F729B7BC69002F3AEF /* ImageInfoSave.xcdatamodeld */; };
+		8A2093FB29B7C77F002F3AEF /* Persistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2093FA29B7C77F002F3AEF /* Persistance.swift */; };
+		8A20940C29B7D8D7002F3AEF /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A20940B29B7D8D7002F3AEF /* CoreDataHelper.swift */; };
+		8A20940E29B7E7B4002F3AEF /* ImageInfoStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A20940D29B7E7B4002F3AEF /* ImageInfoStoreService.swift */; };
+		8A20940F29B7F765002F3AEF /* ImageInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A20940829B7D432002F3AEF /* ImageInfo+CoreDataProperties.swift */; };
 		8A7D96FD29B5E884001F025F /* StoreLab_Coding_ChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D96FC29B5E884001F025F /* StoreLab_Coding_ChallengeApp.swift */; };
 		8A7D96FF29B5E884001F025F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D96FE29B5E884001F025F /* ContentView.swift */; };
 		8A7D970129B5E885001F025F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A7D970029B5E885001F025F /* Assets.xcassets */; };
@@ -53,6 +58,12 @@
 /* Begin PBXFileReference section */
 		8A2093F229B76CD1002F3AEF /* ImageInfoLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfoLoader.swift; sourceTree = "<group>"; };
 		8A2093F429B7B2C5002F3AEF /* ImageInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfoView.swift; sourceTree = "<group>"; };
+		8A2093F829B7BC69002F3AEF /* ImageInfoSave.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ImageInfoSave.xcdatamodel; sourceTree = "<group>"; };
+		8A2093FA29B7C77F002F3AEF /* Persistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistance.swift; sourceTree = "<group>"; };
+		8A20940729B7D432002F3AEF /* ImageInfo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageInfo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8A20940829B7D432002F3AEF /* ImageInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8A20940B29B7D8D7002F3AEF /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		8A20940D29B7E7B4002F3AEF /* ImageInfoStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfoStoreService.swift; sourceTree = "<group>"; };
 		8A7D96F929B5E884001F025F /* StoreLab Coding Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "StoreLab Coding Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A7D96FC29B5E884001F025F /* StoreLab_Coding_ChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLab_Coding_ChallengeApp.swift; sourceTree = "<group>"; };
 		8A7D96FE29B5E884001F025F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,6 +116,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A2093F629B7BC47002F3AEF /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				8A2093FC29B7C7E7002F3AEF /* Extensions */,
+				8A2093F729B7BC69002F3AEF /* ImageInfoSave.xcdatamodeld */,
+				8A2093FA29B7C77F002F3AEF /* Persistance.swift */,
+				8A20940B29B7D8D7002F3AEF /* CoreDataHelper.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		8A2093FC29B7C7E7002F3AEF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8A20940729B7D432002F3AEF /* ImageInfo+CoreDataClass.swift */,
+				8A20940829B7D432002F3AEF /* ImageInfo+CoreDataProperties.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		8A7D96F029B5E884001F025F = {
 			isa = PBXGroup;
 			children = (
@@ -130,7 +161,7 @@
 			children = (
 				8AF906B129B5F2FC00E434CA /* Core */,
 				8A7D972729B5E9DE001F025F /* View */,
-				8A7D972629B5E9D5001F025F /* Model */,
+				8A7D972629B5E9D5001F025F /* ViewModel */,
 				8A7D96FC29B5E884001F025F /* StoreLab_Coding_ChallengeApp.swift */,
 				8A7D96FE29B5E884001F025F /* ContentView.swift */,
 				8A7D970029B5E885001F025F /* Assets.xcassets */,
@@ -164,13 +195,14 @@
 			path = "StoreLab Coding ChallengeUITests";
 			sourceTree = "<group>";
 		};
-		8A7D972629B5E9D5001F025F /* Model */ = {
+		8A7D972629B5E9D5001F025F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				8AF906DD29B761ED00E434CA /* ImageLoader.swift */,
 				8A2093F229B76CD1002F3AEF /* ImageInfoLoader.swift */,
+				8A20940D29B7E7B4002F3AEF /* ImageInfoStoreService.swift */,
 			);
-			path = Model;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		8A7D972729B5E9DE001F025F /* View */ = {
@@ -195,6 +227,7 @@
 		8AF906B229B5F35300E434CA /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				8A2093F629B7BC47002F3AEF /* CoreData */,
 				8AF906B929B5FAD700E434CA /* API */,
 			);
 			path = Data;
@@ -393,17 +426,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A2093F929B7BC69002F3AEF /* ImageInfoSave.xcdatamodeld in Sources */,
 				8AF906DA29B6475A00E434CA /* PhotoInfoList.swift in Sources */,
+				8A2093FB29B7C77F002F3AEF /* Persistance.swift in Sources */,
 				8AF906C029B5FCC100E434CA /* NetworkError.swift in Sources */,
+				8A20940E29B7E7B4002F3AEF /* ImageInfoStoreService.swift in Sources */,
 				8AF906DE29B761ED00E434CA /* ImageLoader.swift in Sources */,
 				8AF906B629B5F6D200E434CA /* ImageInfo.swift in Sources */,
 				8AF906C829B602F900E434CA /* RequestManager.swift in Sources */,
 				8AF906CE29B605B800E434CA /* ImageView.swift in Sources */,
+				8A20940C29B7D8D7002F3AEF /* CoreDataHelper.swift in Sources */,
 				8A2093F329B76CD1002F3AEF /* ImageInfoLoader.swift in Sources */,
 				8A2093F529B7B2C5002F3AEF /* ImageInfoView.swift in Sources */,
 				8AF906CB29B6038B00E434CA /* DataParser.swift in Sources */,
 				8A7D96FF29B5E884001F025F /* ContentView.swift in Sources */,
 				8AF906D829B629D100E434CA /* ImageGridView.swift in Sources */,
+				8A20940F29B7F765002F3AEF /* ImageInfo+CoreDataProperties.swift in Sources */,
 				8AF906C629B6021F00E434CA /* APIManager.swift in Sources */,
 				8A7D96FD29B5E884001F025F /* StoreLab_Coding_ChallengeApp.swift in Sources */,
 				8AF906C429B5FF4200E434CA /* PhotoInfoRequest.swift in Sources */,
@@ -760,6 +798,19 @@
 			productName = NukeUI;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		8A2093F729B7BC69002F3AEF /* ImageInfoSave.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8A2093F829B7BC69002F3AEF /* ImageInfoSave.xcdatamodel */,
+			);
+			currentVersion = 8A2093F829B7BC69002F3AEF /* ImageInfoSave.xcdatamodel */;
+			path = ImageInfoSave.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8A7D96F129B5E884001F025F /* Project object */;
 }
