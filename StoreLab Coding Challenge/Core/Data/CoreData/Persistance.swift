@@ -10,6 +10,9 @@ import CoreData
 struct PersistenceController {
     static let shared = PersistenceController()
     
+    static let datamodelName = "ImageInfoSave"
+    static let storeType = "sqlite"
+    
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
@@ -29,7 +32,7 @@ struct PersistenceController {
     let container: NSPersistentContainer
     
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "ImageInfoSave")
+        container = NSPersistentContainer(name: Self.datamodelName)
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
@@ -57,6 +60,30 @@ struct PersistenceController {
         \(error.localizedDescription)
       """)
         }
+    }
+    
+    static func loadStores() {
+        shared.container.loadPersistentStores(completionHandler: { (nsPersistentStoreDescription, error) in
+            guard let error = error else {
+                return
+            }
+            fatalError(error.localizedDescription)
+        })
+    }
+    
+    private static let url: URL = {
+        let url = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0].appendingPathComponent("\(datamodelName).\(storeType)")
+        
+        assert(FileManager.default.fileExists(atPath: url.path))
+        
+        return url
+    }()
+
+    
+    static func deleteAndRebuild() {
+        try! shared.container.persistentStoreCoordinator.destroyPersistentStore(at: url, ofType: storeType)
+        
+        loadStores()
     }
 }
 

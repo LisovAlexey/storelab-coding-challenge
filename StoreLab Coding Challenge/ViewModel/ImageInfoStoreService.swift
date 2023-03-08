@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 protocol ImageInfoStore {
-    func save(imageInfos: [ImageInfo]) async throws
+    func save(imageInfos: [ImageInfo]) throws
 }
 
 struct ImageInfoStoreService {
@@ -21,7 +21,7 @@ struct ImageInfoStoreService {
 }
 
 extension ImageInfoStoreService: ImageInfoStore {
-    func save(imageInfos: [ImageInfo]) async throws {
+    func save(imageInfos: [ImageInfo]) throws {
         for var imageInfo in imageInfos {
             imageInfo.toManagedObject(context: context)
         }

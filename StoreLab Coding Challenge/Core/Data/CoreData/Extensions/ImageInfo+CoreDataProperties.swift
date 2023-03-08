@@ -27,16 +27,18 @@ extension ImageInfo {
         self.width = Int(managedObject.width)
         self.height = Int(managedObject.height)
         self.image = UIImage(data: managedObject.image ?? Data())
+        self.isFavourite = managedObject.isFavourite
     }
     
-    private func checkForExistingImageInfo(id: Int, context: NSManagedObjectContext = PersistenceController.shared.container.viewContext) throws -> Bool {
+    private func checkForExistingImageInfo(id: Int, context: NSManagedObjectContext) throws -> Bool {
         let fetchRequest = ImageInfoEntity.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id = %d", id)
 
         let results = try context.fetch(fetchRequest)
         
-        if !results.isEmpty,
-           let firstResult = results.first as? ImageInfoEntity {
+        if !results.isEmpty
+//           let firstResult = results.first as? ImageInfoEntity
+        {
             return true
         }
         return false
@@ -58,7 +60,7 @@ extension ImageInfo {
         return firstResult.getImageInfo()
     }
     
-    mutating func toManagedObject(context: NSManagedObjectContext = PersistenceController.shared.container.viewContext) {
+    func toManagedObject(context: NSManagedObjectContext) {
         do {
             guard try checkForExistingImageInfo(id: id, context: context) == false else {
                 print("Object already in database")
@@ -77,6 +79,7 @@ extension ImageInfo {
         persistedValue.url = self.url
         persistedValue.author = self.author
         persistedValue.image = self.image?.pngData()
+        persistedValue.isFavourite = self.isFavourite
         
     }
 }

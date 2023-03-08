@@ -9,24 +9,29 @@ import Foundation
 
 import UIKit
 
+
 struct ImageInfo: Decodable, Identifiable, Equatable {
-    init(id: Int, author: String, width: Int, height: Int, url: String, downloadUrl: String) {
+    init(id: Int, author: String, width: Int, height: Int, url: String, downloadUrl: String, isFavourite: Bool) {
         self.id = id
         self.author = author
         self.width = width
         self.height = height
         self.url = url
         self.downloadUrl = downloadUrl
+        
+        self.isFavourite = isFavourite
+        
     }
     
     static let mock = ImageInfo(
         id: 220, author: "Robin Röcker", width: 3872, height: 2416,
         url: "https://unsplash.com/photos/qUToqliACNA",
-        downloadUrl: "https://picsum.photos/id/220/200/200"
+        downloadUrl: "https://picsum.photos/id/220/200/200",
+        isFavourite: true
     )
     
     enum CodingKeys: String, CodingKey {
-        case id, author, width, height, url, downloadUrl
+        case id, author, width, height, url, downloadUrl, isFavourite
     }
     
     init(from decoder: Decoder) throws {
@@ -38,6 +43,7 @@ struct ImageInfo: Decodable, Identifiable, Equatable {
         self.height = try container.decode(Int.self, forKey: .height)
         self.url = try container.decode(String.self, forKey: .url)
         self.downloadUrl = try container.decode(String.self, forKey: .downloadUrl)
+        self.isFavourite = (try? container.decode(Bool.self, forKey: .isFavourite)) ?? false
     }
     
     var id: Int
@@ -48,4 +54,6 @@ struct ImageInfo: Decodable, Identifiable, Equatable {
     var downloadUrl: String
     
     var image: UIImage?
+    
+    var isFavourite: Bool
 }

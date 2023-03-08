@@ -10,6 +10,17 @@ import UIKit
 
 actor ImageInfoLoader: ObservableObject {
     @Published @MainActor private(set) var imageInfos: [ImageInfo] = []
+    @Published @MainActor private(set) var favourites: [ImageInfo] = []
+    
+    func addToFavourite(id: Int) async {
+        await MainActor.run {
+            if !favourites.filter({$0.id == id}).isEmpty {
+                favourites.removeAll(where: {$0.id == id})
+            } else {
+                favourites.append(contentsOf: imageInfos.filter({$0.id == id}))
+            }
+        }
+    }
     
     private let imageInfoStore: ImageInfoStore
     
@@ -84,7 +95,7 @@ actor ImageInfoLoader: ObservableObject {
             }
         }
         
-        try await imageInfoStore.save(imageInfos: imageInfos)
+//        try await imageInfoStore.save(imageInfos: imageInfos)
         
         await toggleLoadingImages()
     }

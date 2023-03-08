@@ -12,35 +12,49 @@ import NukeUI
 
 struct ImageGridView: View {
     
-    @StateObject var imageInfoLoader = ImageInfoLoader(imageInfoStore: ImageInfoStoreService(context: PersistenceController.shared.container.newBackgroundContext()))
+    @EnvironmentObject var imageInfoLoader: ImageInfoLoader
+    @EnvironmentObject var favouritesImagesStore: FavouritesImagesStore
 
-    
     @State var isDisplayingPreview = false
     @State var selected: ImageInfo? = nil
     
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.flexible(), spacing: 4), GridItem(.flexible(), spacing: 4)], spacing: 4) {
-                ForEach(imageInfoLoader.imageInfos) { imageInfo in
-                    Button(action: {
-                        selected = imageInfo
-                    }, label: {
-                        ImageView(imageInfo: imageInfo)
-                            .onAppear {
-                                Task {
-                                    try await imageInfoLoader.loadImagesIfNeeded(imageInfo: imageInfo)
-                                }
+                ForEach(imageInfoLoader.imageInfos.indices, id: \.self) { index in
+                    let imageInfo = imageInfoLoader.imageInfos[index]
+
+                    ImageView(imageInfo: imageInfo)
+                        .onAppear {
+                            Task {
+                                try await imageInfoLoader.loadImagesIfNeeded(imageInfo: imageInfo)
                             }
-                    })
+                        }
+                        .onTapGesture {
+                            selected = imageInfo
+                        }
+                        .onLongPressGesture(minimumDuration: 0.075) {
+                            Task {
+                                await imageInfoLoader.addToFavourite(id: imageInfo.id)
+                            }
+                            print("Like!")
+                        }
+                        .overlay(
+                            imageInfoLoader.favourites.contains(where: {$0.id == imageInfo.id}) ? Image(systemName: "heart.fill").foregroundColor(.red).font(.title) : nil, alignment: .topTrailing)
+                        }
                 }
             }
             .padding(8)
             .onAppear {
                 Task {
-                    try? await imageInfoLoader.loadImages()
+                    do {
+                        try await imageInfoLoader.loadImages()
+                    } catch {
+                        fatalError("can't load images; \(error.localizedDescription)" )
+                    }
+                    
                 }
             }
-        }
         .sheet(isPresented: $isDisplayingPreview, onDismiss: {
             selected = nil
         }, content: {
@@ -60,89 +74,3 @@ struct ImageGridView_Previews: PreviewProvider {
         ImageGridView()
     }
 }
-
-
-
-//class ImageInfoLoader: ObservableObject {
-//
-//    @Published var imageInfos: [ImageInfo] = []
-//    @Published var page = 0
-//
-//    var limit = 20
-//    let downloadBefore = 20
-
-//    var isInited = false
-//    private var loadingNow = false
-
-//    func initiallyLoadData() {
-//        isInited = true
-//        loadMoreData()
-//    }
-
-//    func loadMoreDataIfNeeded(currentItem: ImageInfo) {
-//        guard imageInfos.count >= downloadBefore && isInited else {
-//            return
-//        }
-//
-//        guard let lastDownloadBeforeItem = imageInfos.suffix(downloadBefore).first else {
-//            return
-//        }
-//
-//        if currentItem.id >= lastDownloadBeforeItem.id && !loadingNow {
-//            loadMoreData()
-//        } else {
-//            print(currentItem.id)
-//        }
-//    }
-//
-//    func loadMoreData() {
-//
-//        loadingNow = true
-////        do {
-//            Task {
-//                page += 1
-//                var nextImageInfoList: [ImageInfo] =
-//                    try await requestManager.perform(PhotoInfoListRequest.getPhotoInfoListById(page: page, limit: limit))
-//
-//                let datas = await withTaskGroup(of: Data.self) { [unowned self] group in
-//
-//                    for imageInfo in nextImageInfoList {
-//
-//                        group.addTask {
-//                            let request = PhotoRequest.getPhotoByIdSquare(id: imageInfo.id, squareSize: 400)
-//
-//                            do {
-//                                return try await requestManager.apiManager.perform(request)
-//                            } catch {
-//                                print("fail1")
-//                            }
-//
-//                            return Data()
-//                        }
-//                    }
-//                }
-//
-//                for (i, data) in nextImageInfoList.enumerated() {
-//                    nextImageInfoList[i] = data
-//                }
-//
-//                await MainActor.run {
-//                    self.imageInfos.append(contentsOf: nextImageInfoList)
-//                }
-//
-//
-//            }
-//
-////            imageInfos.append(contentsOf: nextImageInfoList)
-//
-//
-////            print("New images loaded; page: ", page)
-////        } catch {
-////            print("Error getting new image: \(error.localizedDescription)")
-////        }
-//
-//        loadingNow = false
-//
-//    }
-//
-//}

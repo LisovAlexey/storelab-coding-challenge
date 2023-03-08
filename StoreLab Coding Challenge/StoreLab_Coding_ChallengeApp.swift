@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct StoreLab_Coding_ChallengeApp: App {
+    
+//    init () {
+//        PersistenceController.deleteAndRebuild()
+//    }
     var body: some Scene {
         WindowGroup {
-            ImageGridView()
+            MainView()
 //                .environmentObject(ImageLoader())
         }
     }
