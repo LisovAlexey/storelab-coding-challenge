@@ -11,20 +11,21 @@ class FavouritesImagesStore: ObservableObject {
     @Published var isFavouriteSet: Set<Int> = []
 }
 
-
 struct MainView: View {
-    
-    @StateObject var imageInfoLoader = ImageInfoLoader(imageInfoStore: ImageInfoStoreService(context: PersistenceController.shared.container.newBackgroundContext()))
-    
+
+    @StateObject var imageInfoLoader = ImageInfoLoader(
+        imageInfoStore: ImageInfoStoreService(context:
+                                                PersistenceController.shared.container.newBackgroundContext()))
+
     @StateObject var favouritesImagesStore = FavouritesImagesStore()
-    
+
     var body: some View {
         TabView {
             ImageGridView()
                 .tabItem {
                     Label("API", systemImage: "list.dash")
                 }
-            
+
             FavouritesView()
                 .tabItem {
                     Label("Favourites", systemImage: "heart")

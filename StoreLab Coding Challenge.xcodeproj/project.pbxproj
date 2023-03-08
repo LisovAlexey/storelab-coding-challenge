@@ -15,7 +15,7 @@
 		8A20940F29B7F765002F3AEF /* ImageInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A20940829B7D432002F3AEF /* ImageInfo+CoreDataProperties.swift */; };
 		8A20941329B8837C002F3AEF /* ImageInfoSave.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A20941129B8837C002F3AEF /* ImageInfoSave.xcdatamodeld */; };
 		8A20941529B890D9002F3AEF /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A20941429B890D9002F3AEF /* FavouritesView.swift */; };
-		8A7D96FD29B5E884001F025F /* StoreLab_Coding_ChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D96FC29B5E884001F025F /* StoreLab_Coding_ChallengeApp.swift */; };
+		8A7D96FD29B5E884001F025F /* StoreLabCodingChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D96FC29B5E884001F025F /* StoreLabCodingChallengeApp.swift */; };
 		8A7D96FF29B5E884001F025F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D96FE29B5E884001F025F /* MainView.swift */; };
 		8A7D970129B5E885001F025F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A7D970029B5E885001F025F /* Assets.xcassets */; };
 		8A7D970429B5E885001F025F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A7D970329B5E885001F025F /* Preview Assets.xcassets */; };
@@ -66,7 +66,7 @@
 		8A20941229B8837C002F3AEF /* ImageInfoSave.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ImageInfoSave.xcdatamodel; sourceTree = "<group>"; };
 		8A20941429B890D9002F3AEF /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 		8A7D96F929B5E884001F025F /* StoreLab Coding Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "StoreLab Coding Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A7D96FC29B5E884001F025F /* StoreLab_Coding_ChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLab_Coding_ChallengeApp.swift; sourceTree = "<group>"; };
+		8A7D96FC29B5E884001F025F /* StoreLabCodingChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLabCodingChallengeApp.swift; sourceTree = "<group>"; };
 		8A7D96FE29B5E884001F025F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		8A7D970029B5E885001F025F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A7D970329B5E885001F025F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 				8AF906B129B5F2FC00E434CA /* Core */,
 				8A7D972729B5E9DE001F025F /* View */,
 				8A7D972629B5E9D5001F025F /* ViewModel */,
-				8A7D96FC29B5E884001F025F /* StoreLab_Coding_ChallengeApp.swift */,
+				8A7D96FC29B5E884001F025F /* StoreLabCodingChallengeApp.swift */,
 				8A7D96FE29B5E884001F025F /* MainView.swift */,
 				8A7D970029B5E885001F025F /* Assets.xcassets */,
 				8A7D970229B5E885001F025F /* Preview Content */,
@@ -300,6 +300,7 @@
 				8A7D96F529B5E884001F025F /* Sources */,
 				8A7D96F629B5E884001F025F /* Frameworks */,
 				8A7D96F729B5E884001F025F /* Resources */,
+				8A20941629B8BA95002F3AEF /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -422,6 +423,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8A20941629B8BA95002F3AEF /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\n\nif which swiftlint >/dev/null; then\n  swiftlint --config .swiftlint.yml\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8A7D96F529B5E884001F025F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -445,7 +468,7 @@
 				8A20940F29B7F765002F3AEF /* ImageInfo+CoreDataProperties.swift in Sources */,
 				8A20941529B890D9002F3AEF /* FavouritesView.swift in Sources */,
 				8AF906C629B6021F00E434CA /* APIManager.swift in Sources */,
-				8A7D96FD29B5E884001F025F /* StoreLab_Coding_ChallengeApp.swift in Sources */,
+				8A7D96FD29B5E884001F025F /* StoreLabCodingChallengeApp.swift in Sources */,
 				8AF906C429B5FF4200E434CA /* PhotoInfoRequest.swift in Sources */,
 				8AF906BB29B5FB2400E434CA /* Request.swift in Sources */,
 				8AF906BD29B5FBC300E434CA /* APIConstants.swift in Sources */,

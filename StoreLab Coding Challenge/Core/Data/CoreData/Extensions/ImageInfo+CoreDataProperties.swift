@@ -10,13 +10,11 @@ import Foundation
 import CoreData
 import UIKit
 
-
 extension ImageInfoEntity {
     func getImageInfo() -> ImageInfo {
         return ImageInfo.init(managedObject: self)
     }
 }
-
 
 extension ImageInfo {
     init(managedObject: ImageInfoEntity) {
@@ -29,13 +27,13 @@ extension ImageInfo {
         self.image = UIImage(data: managedObject.image ?? Data())
         self.isFavourite = managedObject.isFavourite
     }
-    
+
     private func checkForExistingImageInfo(id: Int, context: NSManagedObjectContext) throws -> Bool {
         let fetchRequest = ImageInfoEntity.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id = %d", id)
 
         let results = try context.fetch(fetchRequest)
-        
+
         if !results.isEmpty
 //           let firstResult = results.first as? ImageInfoEntity
         {
@@ -44,22 +42,23 @@ extension ImageInfo {
         return false
 
     }
-    
-    func getExistingImageInfo(context: NSManagedObjectContext = PersistenceController.shared.container.viewContext) -> ImageInfo? {
+
+    func getExistingImageInfo(context: NSManagedObjectContext =
+                              PersistenceController.shared.container.viewContext) -> ImageInfo? {
         let fetchRequest = ImageInfoEntity.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id = %d", self.id)
-        
+
         guard let results = try? context.fetch(fetchRequest),
               let firstResult = results.first,
               firstResult.image != nil else {
-            
+
             return nil
         }
         print("Image in base")
-        
+
         return firstResult.getImageInfo()
     }
-    
+
     func toManagedObject(context: NSManagedObjectContext) {
         do {
             guard try checkForExistingImageInfo(id: id, context: context) == false else {
@@ -69,7 +68,7 @@ extension ImageInfo {
         } catch {
             print("Can't save new model: cant't check existance")
         }
-        
+
         let persistedValue = ImageInfoEntity.init(context: context)
 
         persistedValue.id = Int64(self.id)
@@ -80,6 +79,6 @@ extension ImageInfo {
         persistedValue.author = self.author
         persistedValue.image = self.image?.pngData()
         persistedValue.isFavourite = self.isFavourite
-        
+
     }
 }

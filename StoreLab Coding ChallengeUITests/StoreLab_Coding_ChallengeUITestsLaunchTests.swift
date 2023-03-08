@@ -5,9 +5,10 @@
 //  Created by Alexey Lisov on 06/03/2023.
 //
 
+// swiftlint: disable type_name
 import XCTest
 
-final class StoreLab_Coding_ChallengeUITestsLaunchTests: XCTestCase {
+final class StoreLabCodingChallengeAppUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

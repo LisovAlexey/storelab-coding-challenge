@@ -12,12 +12,12 @@ protocol RequestManagerProtocol {
 }
 
 final class RequestManager: RequestManagerProtocol {
-    
+
     static let shared = RequestManager()
-    
+
     let apiManager: APIManagerProtocol
     let parser: DataParserProtocol
-    
+
     init(
         apiManager: APIManagerProtocol = APIManager(),
         parser: DataParserProtocol = DataParser()
@@ -25,7 +25,7 @@ final class RequestManager: RequestManagerProtocol {
         self.apiManager = apiManager
         self.parser = parser
     }
-    
+
     func perform<T: Decodable>(_ request: RequestProtocol) async throws -> T {
         let data = try await apiManager.perform(request)
         print("Data getting successful")

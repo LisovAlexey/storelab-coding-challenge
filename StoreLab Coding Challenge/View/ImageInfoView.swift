@@ -10,7 +10,7 @@ import SwiftUI
 struct Cell: View {
     var description: String
     var value: String
-    
+
     var body: some View {
         HStack {
             Text(description)
@@ -22,12 +22,12 @@ struct Cell: View {
 
 struct ImageInfoView: View {
     var imageInfo: ImageInfo
-    
+
     var body: some View {
-        
+
         VStack {
             Text("Image info").font(.title3)
-            
+
             List {
                 Cell(description: "ID", value: "\(imageInfo.id)")
                 Cell(description: "Author", value: "\(imageInfo.author)")
@@ -36,7 +36,7 @@ struct ImageInfoView: View {
                 Cell(description: "Original", value: "\(imageInfo.url)")
             }
         }.padding()
-        
+
     }
 }
 

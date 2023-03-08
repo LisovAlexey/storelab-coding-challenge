@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class StoreLab_Coding_ChallengeUITests: XCTestCase {
+final class StoreLabCodingChallengeAppUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

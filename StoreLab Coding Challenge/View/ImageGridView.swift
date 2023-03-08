@@ -8,16 +8,14 @@
 import SwiftUI
 import NukeUI
 
-
-
 struct ImageGridView: View {
-    
+
     @EnvironmentObject var imageInfoLoader: ImageInfoLoader
     @EnvironmentObject var favouritesImagesStore: FavouritesImagesStore
 
     @State var isDisplayingPreview = false
-    @State var selected: ImageInfo? = nil
-    
+    @State var selected: ImageInfo?
+
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.flexible(), spacing: 4), GridItem(.flexible(), spacing: 4)], spacing: 4) {
@@ -40,7 +38,9 @@ struct ImageGridView: View {
                             print("Like!")
                         }
                         .overlay(
-                            imageInfoLoader.favourites.contains(where: {$0.id == imageInfo.id}) ? Image(systemName: "heart.fill").foregroundColor(.red).font(.title) : nil, alignment: .topTrailing)
+                            imageInfoLoader.favourites.contains(where: {$0.id == imageInfo.id}) ?
+                                Image(systemName: "heart.fill").foregroundColor(.red).font(.title) : nil,
+                            alignment: .topTrailing)
                         }
                 }
             }
@@ -52,7 +52,7 @@ struct ImageGridView: View {
                     } catch {
                         fatalError("can't load images; \(error.localizedDescription)" )
                     }
-                    
+
                 }
             }
         .sheet(isPresented: $isDisplayingPreview, onDismiss: {
@@ -67,7 +67,6 @@ struct ImageGridView: View {
         }
     }
 }
-
 
 struct ImageGridView_Previews: PreviewProvider {
     static var previews: some View {

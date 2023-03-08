@@ -14,7 +14,7 @@ protocol ImageInfoStore {
 
 struct ImageInfoStoreService {
     private let context: NSManagedObjectContext
-    
+
     init(context: NSManagedObjectContext) {
         self.context = context
     }
