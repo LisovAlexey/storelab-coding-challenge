@@ -20,12 +20,28 @@ actor ImageInfoLoader: ObservableObject {
                 favourites.append(contentsOf: imageInfos.filter({$0.id == id}))
             }
         }
+        
+        do {
+            try await favouritesStore.save(imageInfos: favourites)
+        } catch {
+            print("Failed to save favourites")
+        }
+        
     }
 
     private let imageInfoStore: ImageInfoStore
+    private let favouritesStore: ImageInfoStore
 
-    init(imageInfoStore: ImageInfoStore) {
+    init(imageInfoStore: ImageInfoStore,
+         favouritesStore: ImageInfoStore) {
         self.imageInfoStore = imageInfoStore
+        self.favouritesStore = favouritesStore
+        
+        Task {
+            await MainActor.run {
+                favourites = (try? favouritesStore.load()) ?? []
+            }
+        }
     }
 
     private var page = 0

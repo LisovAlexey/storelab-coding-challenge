@@ -10,6 +10,7 @@ import CoreData
 
 protocol ImageInfoStore {
     func save(imageInfos: [ImageInfo]) throws
+    func load() throws -> [ImageInfo]
 }
 
 struct ImageInfoStoreService {
@@ -26,5 +27,9 @@ extension ImageInfoStoreService: ImageInfoStore {
             imageInfo.toManagedObject(context: context)
         }
         try context.save()
+    }
+    
+    func load() throws -> [ImageInfo] {
+        throw fatalError("Not implemented yet")
     }
 }

@@ -22,6 +22,7 @@
 		8A7D970E29B5E885001F025F /* StoreLab_Coding_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D970D29B5E885001F025F /* StoreLab_Coding_ChallengeTests.swift */; };
 		8A7D971829B5E885001F025F /* StoreLab_Coding_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D971729B5E885001F025F /* StoreLab_Coding_ChallengeUITests.swift */; };
 		8A7D971A29B5E885001F025F /* StoreLab_Coding_ChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D971929B5E885001F025F /* StoreLab_Coding_ChallengeUITestsLaunchTests.swift */; };
+		8AC5767129B8F6CD00FA98BF /* ImageInfoStoreServiceUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC5767029B8F6CD00FA98BF /* ImageInfoStoreServiceUserDefaults.swift */; };
 		8AF906B629B5F6D200E434CA /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF906B529B5F6D200E434CA /* ImageInfo.swift */; };
 		8AF906BB29B5FB2400E434CA /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF906BA29B5FB2400E434CA /* Request.swift */; };
 		8AF906BD29B5FBC300E434CA /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF906BC29B5FBC300E434CA /* APIConstants.swift */; };
@@ -76,6 +77,7 @@
 		8A7D971729B5E885001F025F /* StoreLab_Coding_ChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLab_Coding_ChallengeUITests.swift; sourceTree = "<group>"; };
 		8A7D971929B5E885001F025F /* StoreLab_Coding_ChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLab_Coding_ChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8AC5766F29B8C45700FA98BF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8AC5767029B8F6CD00FA98BF /* ImageInfoStoreServiceUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfoStoreServiceUserDefaults.swift; sourceTree = "<group>"; };
 		8AF906B529B5F6D200E434CA /* ImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
 		8AF906BA29B5FB2400E434CA /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		8AF906BC29B5FBC300E434CA /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
@@ -165,7 +167,6 @@
 				8A7D972729B5E9DE001F025F /* View */,
 				8A7D972629B5E9D5001F025F /* ViewModel */,
 				8A7D96FC29B5E884001F025F /* StoreLabCodingChallengeApp.swift */,
-				8A7D96FE29B5E884001F025F /* MainView.swift */,
 				8A7D970029B5E885001F025F /* Assets.xcassets */,
 				8A7D970229B5E885001F025F /* Preview Content */,
 			);
@@ -203,7 +204,7 @@
 				8AF906DD29B761ED00E434CA /* ImageLoader.swift */,
 				8A2093F229B76CD1002F3AEF /* ImageInfoLoader.swift */,
 				8A20940D29B7E7B4002F3AEF /* ImageInfoStoreService.swift */,
-				8A20941429B890D9002F3AEF /* FavouritesView.swift */,
+				8AC5767029B8F6CD00FA98BF /* ImageInfoStoreServiceUserDefaults.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -211,9 +212,11 @@
 		8A7D972729B5E9DE001F025F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8A7D96FE29B5E884001F025F /* MainView.swift */,
 				8AF906CD29B605B800E434CA /* ImageView.swift */,
 				8AF906D729B629D100E434CA /* ImageGridView.swift */,
 				8A2093F429B7B2C5002F3AEF /* ImageInfoView.swift */,
+				8A20941429B890D9002F3AEF /* FavouritesView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				8A20940E29B7E7B4002F3AEF /* ImageInfoStoreService.swift in Sources */,
 				8AF906DE29B761ED00E434CA /* ImageLoader.swift in Sources */,
 				8AF906B629B5F6D200E434CA /* ImageInfo.swift in Sources */,
+				8AC5767129B8F6CD00FA98BF /* ImageInfoStoreServiceUserDefaults.swift in Sources */,
 				8AF906C829B602F900E434CA /* RequestManager.swift in Sources */,
 				8AF906CE29B605B800E434CA /* ImageView.swift in Sources */,
 				8A20940C29B7D8D7002F3AEF /* CoreDataHelper.swift in Sources */,

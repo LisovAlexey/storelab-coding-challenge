@@ -9,7 +9,7 @@ import Foundation
 
 import UIKit
 
-struct ImageInfo: Decodable, Identifiable, Equatable {
+struct ImageInfo: Codable, Identifiable, Equatable {
     init(id: Int, author: String, width: Int, height: Int, url: String, downloadUrl: String, isFavourite: Bool) {
         self.id = id
         self.author = author
@@ -20,6 +20,18 @@ struct ImageInfo: Decodable, Identifiable, Equatable {
 
         self.isFavourite = isFavourite
 
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(String(id), forKey: .id)
+        try container.encode(author, forKey: .author)
+        try container.encode(width, forKey: .width)
+        try container.encode(height, forKey: .height)
+        try container.encode(url, forKey: .url)
+        try container.encode(downloadUrl, forKey: .downloadUrl)
+        try container.encode(isFavourite, forKey: .isFavourite)
+        try container.encode(image?.pngData(), forKey: .image)
     }
     
     func addImage(image: UIImage?) -> ImageInfo {
@@ -36,7 +48,7 @@ struct ImageInfo: Decodable, Identifiable, Equatable {
     )
 
     enum CodingKeys: String, CodingKey {
-        case id, author, width, height, url, downloadUrl, isFavourite
+        case id, author, width, height, url, downloadUrl, isFavourite, image
     }
 
     init(from decoder: Decoder) throws {
@@ -49,6 +61,9 @@ struct ImageInfo: Decodable, Identifiable, Equatable {
         self.url = try container.decode(String.self, forKey: .url)
         self.downloadUrl = try container.decode(String.self, forKey: .downloadUrl)
         self.isFavourite = (try? container.decode(Bool.self, forKey: .isFavourite)) ?? false
+        if let imageData = try? container.decode(Data.self, forKey: .image) {
+            self.image = UIImage(data: imageData)
+        }
     }
 
     var id: Int

@@ -14,8 +14,10 @@ class FavouritesImagesStore: ObservableObject {
 struct MainView: View {
 
     @StateObject var imageInfoLoader = ImageInfoLoader(
-        imageInfoStore: ImageInfoStoreService(context:
-                                                PersistenceController.shared.container.newBackgroundContext()))
+        imageInfoStore:
+            ImageInfoStoreService(context: PersistenceController.shared.container.newBackgroundContext()),
+        favouritesStore: ImageInfoStoreServiceUserDefaults()
+    )
 
     @StateObject var favouritesImagesStore = FavouritesImagesStore()
 
