@@ -43,16 +43,14 @@ actor ImageInfoLoader: ObservableObject {
         page += 1
     }
 
-    func preloadImage(newImageInfo: inout ImageInfo) async throws {
+    func preloadImage(imageInfo: ImageInfo) async throws -> UIImage? {
 
-        if let imageInfoFromStorage = newImageInfo.getExistingImageInfo() {
-            newImageInfo = imageInfoFromStorage
-            return
+        if let imageInfoFromStorage = imageInfo.getExistingImageInfo() {
+            return imageInfoFromStorage.image
         }
 
-        let newImage = try await ImageLoader.shared.image(newImageInfo)
-        newImageInfo.image = newImage
-        setLastLoadedId(id: newImageInfo.id)
+        return try await ImageLoader.shared.image(imageInfo)
+        
     }
 
     var loadingImages: Bool = false
@@ -83,19 +81,26 @@ actor ImageInfoLoader: ObservableObject {
         await nextPage()
 
         let request = await PhotoInfoListRequest.getPhotoInfoListById(page: page, limit: limit)
-        var newImageInfos: [ImageInfo] = try await RequestManager.shared.perform(request)
-
-        for index in newImageInfos.indices {
-            try await preloadImage(newImageInfo: &newImageInfos[index])
-
-            let loadedImage = newImageInfos[index]
-
-            await MainActor.run {
-                imageInfos.append(loadedImage)
+        let newImageInfos: [ImageInfo] = try await RequestManager.shared.perform(request)
+        
+        try await withThrowingTaskGroup(of: (ImageInfo, UIImage?).self) { group in
+            for imageInfo in newImageInfos {
+                group.addTask { [self] in
+                    let image = try await preloadImage(imageInfo: imageInfo)
+                    return (imageInfo, image)
+                }
+            }
+            
+            for try await (imageInfo, image) in group {
+                let imageInfoCopy = imageInfo.addImage(image: image)
+                
+                await MainActor.run {
+                    imageInfos.append(imageInfoCopy)
+                }
+                
+                await setLastLoadedId(id: imageInfoCopy.id)
             }
         }
-
-//        try await imageInfoStore.save(imageInfos: imageInfos)
 
         await toggleLoadingImages()
     }

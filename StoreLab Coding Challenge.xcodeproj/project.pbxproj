@@ -75,6 +75,7 @@
 		8A7D971329B5E885001F025F /* StoreLab Coding ChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StoreLab Coding ChallengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A7D971729B5E885001F025F /* StoreLab_Coding_ChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLab_Coding_ChallengeUITests.swift; sourceTree = "<group>"; };
 		8A7D971929B5E885001F025F /* StoreLab_Coding_ChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLab_Coding_ChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8AC5766F29B8C45700FA98BF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8AF906B529B5F6D200E434CA /* ImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
 		8AF906BA29B5FB2400E434CA /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		8AF906BC29B5FBC300E434CA /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
@@ -139,6 +140,7 @@
 		8A7D96F029B5E884001F025F = {
 			isa = PBXGroup;
 			children = (
+				8AC5766F29B8C45700FA98BF /* README.md */,
 				8A7D96FB29B5E884001F025F /* StoreLab Coding Challenge */,
 				8A7D970C29B5E885001F025F /* StoreLab Coding ChallengeTests */,
 				8A7D971629B5E885001F025F /* StoreLab Coding ChallengeUITests */,

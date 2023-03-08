@@ -21,6 +21,12 @@ struct ImageInfo: Decodable, Identifiable, Equatable {
         self.isFavourite = isFavourite
 
     }
+    
+    func addImage(image: UIImage?) -> ImageInfo {
+        var imageInfoCopy = self
+        imageInfoCopy.image = image
+        return imageInfoCopy
+    }
 
     static let mock = ImageInfo(
         id: 220, author: "Robin Röcker", width: 3872, height: 2416,
