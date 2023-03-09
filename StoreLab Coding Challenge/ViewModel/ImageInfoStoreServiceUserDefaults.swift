@@ -26,7 +26,7 @@ extension ImageInfoStoreServiceUserDefaults: ImageInfoStore {
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(imageInfos) {
             userDefaults.set(encoded, forKey: key)
-            print("Favourites saved", String(data: encoded, encoding: .utf8))
+            print("Favourites saved")//, String(data: encoded, encoding: .utf8))
             return
         }
         

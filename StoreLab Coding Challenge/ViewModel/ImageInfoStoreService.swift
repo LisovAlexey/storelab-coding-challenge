@@ -8,6 +8,10 @@
 import Foundation
 import CoreData
 
+enum ImageInfoStoreError: Error {
+    case not
+}
+
 protocol ImageInfoStore {
     func save(imageInfos: [ImageInfo]) throws
     func load() throws -> [ImageInfo]
@@ -23,12 +27,12 @@ struct ImageInfoStoreService {
 
 extension ImageInfoStoreService: ImageInfoStore {
     func save(imageInfos: [ImageInfo]) throws {
-        for var imageInfo in imageInfos {
+        for imageInfo in imageInfos {
             imageInfo.toManagedObject(context: context)
         }
         try context.save()
     }
-    
+
     func load() throws -> [ImageInfo] {
         throw fatalError("Not implemented yet")
     }

@@ -11,6 +11,8 @@ import UIKit
 actor ImageInfoLoader: ObservableObject {
     @Published @MainActor private(set) var imageInfos: [ImageInfo] = []
     @Published @MainActor private(set) var favourites: [ImageInfo] = []
+    
+    let chunkSize = 4
 
     func addToFavourite(id: Int) async {
         await MainActor.run {
@@ -97,18 +99,26 @@ actor ImageInfoLoader: ObservableObject {
         await nextPage()
 
         let request = await ImageInfoListRequest.getImageInfoListById(page: page, limit: limit)
-        let newImageInfos: [ImageInfo] = try await RequestManager.shared.perform(request)
-        
-        try await withThrowingTaskGroup(of: (ImageInfo, UIImage?).self) { group in
-            for imageInfo in newImageInfos {
-                group.addTask { [self] in
-                    let image = try await preloadImage(imageInfo: imageInfo)
-                    return (imageInfo, image)
+        let fullImageInfos: [ImageInfo] = try await RequestManager.shared.perform(request)
+
+        for imageInfoChunk in fullImageInfos.getChunks(withSize: chunkSize) {
+            
+            let sortedChunk = try await withThrowingTaskGroup(of: (ImageInfo, UIImage?).self) { group in
+                for imageInfo in imageInfoChunk {
+                    group.addTask { [self] in
+                        let image = try await preloadImage(imageInfo: imageInfo)
+                        return (imageInfo, image)
+                    }
                 }
+                
+                let chunkImageInfos = try await group.reduce(into: [(ImageInfo, UIImage?)]()) { $0.append($1) }
+                
+                return chunkImageInfos.sorted { $0.0.id < $1.0.id }
+                
             }
             
-            for try await (imageInfo, image) in group {
-                let imageInfoCopy = imageInfo.addImage(image: image)
+            for (imageInfo, newImage) in sortedChunk {
+                let imageInfoCopy = imageInfo.addImage(image: newImage)
                 
                 await MainActor.run {
                     imageInfos.append(imageInfoCopy)
@@ -119,6 +129,10 @@ actor ImageInfoLoader: ObservableObject {
         }
 
         await toggleLoadingImages()
+    }
+    
+    nonisolated func loadChunk() async throws {
+        
     }
 
 }
