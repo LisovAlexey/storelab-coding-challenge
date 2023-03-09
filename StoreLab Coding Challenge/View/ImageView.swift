@@ -18,6 +18,7 @@ struct ImageView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
+            Text("\(imageInfo.id)")
         }
     }
 }

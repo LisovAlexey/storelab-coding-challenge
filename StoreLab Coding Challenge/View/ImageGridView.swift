@@ -11,7 +11,6 @@ import NukeUI
 struct ImageGridView: View {
 
     @EnvironmentObject var imageInfoLoader: ImageInfoLoader
-    @EnvironmentObject var favouritesImagesStore: FavouritesImagesStore
 
     @State var isDisplayingPreview = false
     @State var selected: ImageInfo?

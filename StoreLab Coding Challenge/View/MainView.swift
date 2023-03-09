@@ -19,8 +19,6 @@ struct MainView: View {
         favouritesStore: ImageInfoStoreServiceUserDefaults()
     )
 
-    @StateObject var favouritesImagesStore = FavouritesImagesStore()
-
     var body: some View {
         TabView {
             ImageGridView()
@@ -34,7 +32,6 @@ struct MainView: View {
                 }
         }
         .environmentObject(imageInfoLoader)
-        .environmentObject(favouritesImagesStore)
     }
 }
 
