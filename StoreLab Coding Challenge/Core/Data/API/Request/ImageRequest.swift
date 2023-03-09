@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PhotoRequest: RequestProtocol {
+enum ImageRequest: RequestProtocol {
     case getPhotoById(id: Int)
     case getPhotoByIdSquare(id: Int, squareSize: Int)
     case getPhotoByIdWidthHeight(id: Int, width: Int, height: Int)

@@ -1,5 +1,5 @@
 //
-//  PhotoInfoRequest.swift
+//  ImageInfoRequest.swift
 //  StoreLab Coding Challenge
 //
 //  Created by Alexey Lisov on 06/03/2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PhotoInfoRequest: RequestProtocol {
+enum ImageInfoRequest: RequestProtocol {
     case getPhotoInfoById(id: Int)
 
     var path: String {

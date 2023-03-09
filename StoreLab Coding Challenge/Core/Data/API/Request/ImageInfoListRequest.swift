@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-enum PhotoInfoListRequest: RequestProtocol {
-    case getPhotoInfoListById(page: Int, limit: Int)
+enum ImageInfoListRequest: RequestProtocol {
+    case getImageInfoListById(page: Int, limit: Int)
 
     var path: String {
         return "/v2/list"
@@ -18,7 +18,7 @@ enum PhotoInfoListRequest: RequestProtocol {
         var params: [String: String?] = [:]
 
         switch self {
-        case let .getPhotoInfoListById(page, limit):
+        case let .getImageInfoListById(page, limit):
             params["page"] = String(page)
             params["limit"] = String(limit)
         }
