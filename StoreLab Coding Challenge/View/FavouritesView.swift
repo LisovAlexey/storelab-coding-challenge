@@ -17,7 +17,7 @@ struct FavouritesView: View {
             Text("There are no fav images! Long tap to like image")
         } else {
             ScrollView {
-                LazyVGrid(columns: [GridItem(.flexible(), spacing: 4), GridItem(.flexible(), spacing: 4)], spacing: 4) {
+                LazyVGrid(columns: [GridItem(.flexible(), spacing: 2), GridItem(.flexible(), spacing: 2)], spacing: 2) {
                     ForEach(imageInfoLoader.favourites.indices, id: \.self) { index in
                         let imageInfo = imageInfoLoader.favourites[index]
 
@@ -25,7 +25,6 @@ struct FavouritesView: View {
                     }
                 }
             }
-            .padding(8)
         }
     }
 }

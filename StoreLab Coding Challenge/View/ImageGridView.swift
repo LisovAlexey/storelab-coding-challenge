@@ -17,7 +17,7 @@ struct ImageGridView: View {
 
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: [GridItem(.flexible(), spacing: 4), GridItem(.flexible(), spacing: 4)], spacing: 4) {
+            LazyVGrid(columns: [GridItem(.flexible(), spacing: 2), GridItem(.flexible(), spacing: 2)], spacing: 2) {
                 ForEach(imageInfoLoader.imageInfos.indices, id: \.self) { index in
                     let imageInfo = imageInfoLoader.imageInfos[index]
 
@@ -27,15 +27,16 @@ struct ImageGridView: View {
                                 try await imageInfoLoader.loadImagesIfNeeded(imageInfo: imageInfo)
                             }
                         }
-                        .onTapGesture {
-                            selected = imageInfo
-                        }
-                        .onLongPressGesture(minimumDuration: 0.075) {
+
+                        .onTapGesture(count: 2) {
                             Task {
                                 await imageInfoLoader.addToFavourite(id: imageInfo.id)
                             }
-                            print("Like!")
                         }
+                        .onTapGesture {
+                            selected = imageInfo
+                        }
+                        
                         .overlay(
                             imageInfoLoader.favourites.contains(where: {$0.id == imageInfo.id}) ?
                                 Image(systemName: "heart.fill").foregroundColor(.red).font(.title) : nil,
@@ -43,7 +44,7 @@ struct ImageGridView: View {
                         }
                 }
             }
-            .padding(8)
+            .padding(0)
             .onAppear {
                 Task {
                     do {
