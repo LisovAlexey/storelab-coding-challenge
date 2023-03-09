@@ -23,6 +23,7 @@
 		8A7D971829B5E885001F025F /* StoreLab_Coding_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D971729B5E885001F025F /* StoreLab_Coding_ChallengeUITests.swift */; };
 		8A7D971A29B5E885001F025F /* StoreLab_Coding_ChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D971929B5E885001F025F /* StoreLab_Coding_ChallengeUITestsLaunchTests.swift */; };
 		8AC5767129B8F6CD00FA98BF /* ImageInfoStoreServiceUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC5767029B8F6CD00FA98BF /* ImageInfoStoreServiceUserDefaults.swift */; };
+		8AC5767629B9E27F00FA98BF /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC5767529B9E27F00FA98BF /* CoreDataTests.swift */; };
 		8AF906B629B5F6D200E434CA /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF906B529B5F6D200E434CA /* ImageInfo.swift */; };
 		8AF906BB29B5FB2400E434CA /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF906BA29B5FB2400E434CA /* Request.swift */; };
 		8AF906BD29B5FBC300E434CA /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF906BC29B5FBC300E434CA /* APIConstants.swift */; };
@@ -78,6 +79,7 @@
 		8A7D971929B5E885001F025F /* StoreLab_Coding_ChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLab_Coding_ChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8AC5766F29B8C45700FA98BF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8AC5767029B8F6CD00FA98BF /* ImageInfoStoreServiceUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfoStoreServiceUserDefaults.swift; sourceTree = "<group>"; };
+		8AC5767529B9E27F00FA98BF /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
 		8AF906B529B5F6D200E434CA /* ImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
 		8AF906BA29B5FB2400E434CA /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		8AF906BC29B5FBC300E434CA /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 		8A7D970C29B5E885001F025F /* StoreLab Coding ChallengeTests */ = {
 			isa = PBXGroup;
 			children = (
+				8AC5767229B9E20B00FA98BF /* Core */,
 				8A7D970D29B5E885001F025F /* StoreLab_Coding_ChallengeTests.swift */,
 			);
 			path = "StoreLab Coding ChallengeTests";
@@ -219,6 +222,30 @@
 				8A20941429B890D9002F3AEF /* FavouritesView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		8AC5767229B9E20B00FA98BF /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				8AC5767329B9E21A00FA98BF /* Data */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		8AC5767329B9E21A00FA98BF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				8AC5767429B9E26500FA98BF /* CoreData */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		8AC5767429B9E26500FA98BF /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				8AC5767529B9E27F00FA98BF /* CoreDataTests.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		8AF906B129B5F2FC00E434CA /* Core */ = {
@@ -486,6 +513,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AC5767629B9E27F00FA98BF /* CoreDataTests.swift in Sources */,
 				8A7D970E29B5E885001F025F /* StoreLab_Coding_ChallengeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
