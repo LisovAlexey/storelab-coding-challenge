@@ -96,7 +96,7 @@ actor ImageInfoLoader: ObservableObject {
         await toggleLoadingImages()
         await nextPage()
 
-        let request = await PhotoInfoListRequest.getPhotoInfoListById(page: page, limit: limit)
+        let request = await ImageInfoListRequest.getImageInfoListById(page: page, limit: limit)
         let newImageInfos: [ImageInfo] = try await RequestManager.shared.perform(request)
         
         try await withThrowingTaskGroup(of: (ImageInfo, UIImage?).self) { group in

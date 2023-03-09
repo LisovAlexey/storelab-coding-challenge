@@ -41,7 +41,7 @@ actor ImageLoader: ObservableObject {
 
         let download: Task<UIImage, Error> = Task.detached {
 
-            let request = PhotoRequest.getPhotoByIdSquare(id: imageInfo.id, squareSize: 400)
+            let request = ImageRequest.getPhotoByIdSquare(id: imageInfo.id, squareSize: 400)
 
             print("Download: \(imageInfo.id)")
             let data = try await RequestManager.shared.apiManager.perform(request)
