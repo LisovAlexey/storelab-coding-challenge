@@ -14,6 +14,13 @@ extension ImageInfoEntity {
     func getImageInfo() -> ImageInfo {
         return ImageInfo.init(managedObject: self)
     }
+    
+    static func loadAllImageInfos(context: NSManagedObjectContext) throws -> [ImageInfo] {
+        let fetchRequest = ImageInfoEntity.fetchRequest()
+        let results = try context.fetch(fetchRequest)
+        
+        return results.map({$0.getImageInfo()})
+    }
 }
 
 extension ImageInfo {

@@ -31,12 +31,12 @@ actor ImageInfoLoader: ObservableObject {
         
     }
 
-    private let imageInfoStore: ImageInfoStore
+//    private let imageInfoStore: ImageInfoStore
     private let favouritesStore: ImageInfoStore
 
     init(imageInfoStore: ImageInfoStore,
          favouritesStore: ImageInfoStore) {
-        self.imageInfoStore = imageInfoStore
+//        self.imageInfoStore = imageInfoStore
         self.favouritesStore = favouritesStore
         
         Task {
@@ -123,6 +123,8 @@ actor ImageInfoLoader: ObservableObject {
                 await MainActor.run {
                     imageInfos.append(imageInfoCopy)
                 }
+                
+//                try imageInfoStore.save(imageInfos: [imageInfoCopy])
                 
                 await setLastLoadedId(id: imageInfoCopy.id)
             }

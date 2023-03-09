@@ -34,6 +34,6 @@ extension ImageInfoStoreService: ImageInfoStore {
     }
 
     func load() throws -> [ImageInfo] {
-        throw fatalError("Not implemented yet")
+        return try ImageInfoEntity.loadAllImageInfos(context: context)
     }
 }
