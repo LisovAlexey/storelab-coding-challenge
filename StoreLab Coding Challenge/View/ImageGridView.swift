@@ -39,7 +39,15 @@ struct ImageGridView: View {
                         
                         .overlay(
                             imageInfoLoader.favourites.contains(where: {$0.id == imageInfo.id}) ?
-                                Image(systemName: "heart.fill").foregroundColor(.red).font(.title) : nil,
+                            ZStack {
+                                Image(systemName: "heart.fill")
+                                    .foregroundColor(.red)
+                                    .font(.title)
+                                Image(systemName: "heart")
+                                    .foregroundColor(.black)
+                                    .font(.title)
+                            }
+                                 : nil,
                             alignment: .topTrailing)
                         }
                 }
